@@ -1,0 +1,42 @@
+# Arquivos executáveis
+*.exe
+*.pkg
+
+# Arquivos de dados
+*.csv
+*.xls
+*.xlsx
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Diretórios de build
+build/
+dist/
+*.spec
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# Logs
+*.log
+
+# Arquivos de ambiente
+.env
+.venv
+env/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
