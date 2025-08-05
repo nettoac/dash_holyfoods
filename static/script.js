@@ -526,14 +526,20 @@ function getCurrentFilters() {
 
 // Atualiza KPIs
 function updateKPIs(kpis) {
-    document.getElementById('kpi-montante').textContent = formatCurrency(kpis.montante);
-    document.getElementById('kpi-pago').textContent = formatCurrency(kpis.pago_recebido);
-    document.getElementById('kpi-vencido').textContent = formatCurrency(kpis.vencido);
-    document.getElementById('kpi-em-aberto').textContent = formatCurrency(kpis.em_aberto);
-    document.getElementById('kpi-qtd-vencidos').textContent = kpis.qtd_vencidos;
-    document.getElementById('kpi-total-titulos').textContent = kpis.total_titulos;
-    document.getElementById('kpi-atraso-medio').textContent = formatNumber(kpis.atraso_medio, 0);
-    document.getElementById('kpi-inadimplencia').textContent = formatNumber(kpis.inadimplencia) + '%';
+    // Tratamento especial para valores que podem ser NaN
+    const montanteValue = (kpis.montante === null || kpis.montante === undefined || isNaN(kpis.montante) || !isFinite(kpis.montante)) ? 0 : kpis.montante;
+    const pagoValue = (kpis.pago_recebido === null || kpis.pago_recebido === undefined || isNaN(kpis.pago_recebido) || !isFinite(kpis.pago_recebido)) ? 0 : kpis.pago_recebido;
+    const vencidoValue = (kpis.vencido === null || kpis.vencido === undefined || isNaN(kpis.vencido) || !isFinite(kpis.vencido)) ? 0 : kpis.vencido;
+    const emAbertoValue = (kpis.em_aberto === null || kpis.em_aberto === undefined || isNaN(kpis.em_aberto) || !isFinite(kpis.em_aberto)) ? 0 : kpis.em_aberto;
+    
+    document.getElementById('kpi-montante').textContent = formatCurrency(montanteValue);
+    document.getElementById('kpi-pago').textContent = formatCurrency(pagoValue);
+    document.getElementById('kpi-vencido').textContent = formatCurrency(vencidoValue);
+    document.getElementById('kpi-em-aberto').textContent = formatCurrency(emAbertoValue);
+    document.getElementById('kpi-qtd-vencidos').textContent = kpis.qtd_vencidos || 0;
+    document.getElementById('kpi-total-titulos').textContent = kpis.total_titulos || 0;
+    document.getElementById('kpi-atraso-medio').textContent = formatNumber(kpis.atraso_medio || 0, 0);
+    document.getElementById('kpi-inadimplencia').textContent = formatNumber(kpis.inadimplencia || 0) + '%';
     // Tratamento especial para IAG e IAP
     const iagValue = (kpis.iag === null || kpis.iag === undefined || isNaN(kpis.iag) || !isFinite(kpis.iag)) ? 0 : kpis.iag;
     const iapValue = (kpis.iap === null || kpis.iap === undefined || isNaN(kpis.iap) || !isFinite(kpis.iap)) ? 0 : kpis.iap;

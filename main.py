@@ -480,7 +480,7 @@ def calculate_kpis(df: pd.DataFrame, filters: Dict = None) -> Dict:
         'montante': float(montante),
         'pago_recebido': float(pago_recebidos),
         'vencido': float(-abs(vencido)),  # Sempre negativo
-        'em_aberto': float(em_aberto),
+        'em_aberto': float(em_aberto) if not (pd.isna(em_aberto) or em_aberto is None) else 0.0,
         'qtd_vencidos': int(qtd_vencidos),
         'total_titulos': int(total_titulos),
         'atraso_medio': float(atraso_medio),

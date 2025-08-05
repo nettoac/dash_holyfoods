@@ -2,11 +2,11 @@
 
 
 a = Analysis(
-    ['launcher.py'],
+    ['main.py'],
     pathex=[],
     binaries=[],
     datas=[('static', 'static'), ('base_dados', 'base_dados')],
-    hiddenimports=['pandas', 'fastapi', 'uvicorn', 'openpyxl', 'watchdog', 'datetime'],
+    hiddenimports=['pandas', 'fastapi', 'uvicorn', 'plotly', 'watchdog', 'openpyxl', 'xlrd'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
