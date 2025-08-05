@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pandas
+openpyxl
+xlrd
+watchdog
+jinja2
+aiofiles
+python-multipart
+requests
+python-dateutil
